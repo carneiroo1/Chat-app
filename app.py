@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, redirect, session
 import sqlite3
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
 
 app.secret_key = "@r24tur09///login-key-secrettt"
+socketio = SocketIO(app)
 
 @app.route('/')
 def index():
@@ -135,4 +137,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    socketio.run(app, debug=True)

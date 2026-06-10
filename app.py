@@ -136,5 +136,13 @@ def logout():
     return redirect("/login")
 
 
+@app.route("/chat")
+def chat():
+
+    if "username" not in session:
+        return redirect("/login")
+
+    return render_template("chat.html")
+
 if __name__ == "__main__":
     socketio.run(app, debug=True)

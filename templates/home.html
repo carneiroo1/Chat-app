@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+</head>
+
+<body>
+
+    <header>
+        <a href="">Profile</a>
+    </header>
+
+    <main>
+        <h1>Bem vindo de volta, {{ username }}!</h1>
+        <p>Página logado</p>
+        <div class="logout-container">
+            <a href="/logout" class="logout-btn">
+                Sair da Conta
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            Feito por Artur Carneiro
+        </p>
+        <p>
+            2026
+        </p>
+    </footer>
+</body>
+
+</html>

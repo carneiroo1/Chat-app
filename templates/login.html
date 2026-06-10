@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+<body>
+
+    <!-- Header -->
+    <header>
+
+    </header>
+
+    <!-- Main -->
+    <main>
+        <h1>Log-In</h1>
+        {% if success %}
+        <p class="success">
+            Conta criada com sucesso! Faça login.
+        </p>
+        {% endif %}
+        <form action="" method="post">
+            <input type="text" name="username" id="username" placeholder="User">
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Password">
+
+                <button type="button" class="eye-btn" onclick="togglePassword()">
+                    <picture id="eye-picture">
+                        <img src="{{ url_for('static', filename='img/olho.png') }}"
+                            data-open="{{ url_for('static', filename='img/olho.png') }}"
+                            data-closed="{{ url_for('static', filename='img/olho-fechado.png') }}" id="eye-icon">
+                    </picture>
+                </button>
+            </div>
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+            <button type="submit">Enter</button>
+        </form>
+        <div class="other-page">
+            <span>Don't have an account? -></span>
+            <a href="register">Sign-In</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+
+    </footer>
+</body>
+
+</html>

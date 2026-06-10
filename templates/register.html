@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        <h1>Sign-In</h1>
+
+        <form action="" method="post">
+            <input type="text" name="username" id="username" placeholder="User">
+            <input type="email" name="email" id="email" placeholder="Email">
+            <input type="password" name="password" id="password" placeholder="Password">
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+            <button type="submit">Register</button>
+        </form>
+        <div class="other-page">
+            <span>Already have an account? -></span>
+            <a href="login">LogIn</a>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>

@@ -135,7 +135,6 @@ def logout():
     session.pop("username", None)
     return redirect("/login")
 
-
 @app.route("/chat")
 def chat():
 
@@ -143,6 +142,12 @@ def chat():
         return redirect("/login")
 
     return render_template("chat.html")
+
+
+@socketio.on("send_message")
+def handle_message(data):
+
+    print(data["message"])
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)

@@ -1,9 +1,13 @@
+from gevent import monkey
+monkey.patch_all()
+
 from flask import Flask, render_template, request, redirect, session
 import sqlite3
 from flask_socketio import SocketIO, emit
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
 import os
+
 
 load_dotenv()
 
@@ -15,7 +19,7 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def index():
-    return redirect('/login')
+    return redirect('/chat')
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -75,7 +79,8 @@ def register():
         conn.close()
 
         print(f"Usuário {username} cadastrado!")
-
+        return redirect("/login?success=true")
+        
     return render_template("register.html")
 @app.route("/login", methods=["GET", "POST"])
 def login():

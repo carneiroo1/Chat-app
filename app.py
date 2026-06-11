@@ -76,7 +76,7 @@ def register():
 
         print(f"Usuário {username} cadastrado!")
 
-    return render_template("register.html")
+    return redirect("/login?success=true")
 @app.route("/login", methods=["GET", "POST"])
 def login():
     success = request.args.get("success")
@@ -122,7 +122,7 @@ def login():
 
     return render_template(
         "login.html",
-        sucess=success,
+        success=success,
     )
 
 @app.route("/logout")

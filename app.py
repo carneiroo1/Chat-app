@@ -9,7 +9,7 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def index():
-    return redirect('/home')
+    return redirect('/login')
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -105,7 +105,7 @@ def login():
         if user and user[3] == password:
             session["username"] = username
 
-            return redirect("/home")
+            return redirect("/chat")
         
         else:
             return render_template(
@@ -118,17 +118,6 @@ def login():
         "login.html",
         sucess=success,
     )
-
-@app.route("/home")
-def home():
-
-    if "username" not in session:
-        return redirect("/login")
-
-    return render_template(
-        "home.html",
-        username=session["username"]
-        )
 
 @app.route("/logout")
 def logout():

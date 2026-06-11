@@ -1,16 +1,18 @@
 const socket = io();
 
-function sendMessage() {
+function enviarMensagem() {
+  const input = document.getElementById("message");
+  const message = input.value;
 
-    const input =
-        document.getElementById("message");
+  if (message.trim() === "") return;
 
-    socket.emit(
-        "send_message",
-        {
-            message: input.value
-        }
-    );
-
-    input.value = "";
+  socket.emit("send_message", { message: message });
+  input.value = "";
 }
+
+socket.on("receive_message", function(data) {
+  const list = document.getElementById("message-list");
+  const item = document.createElement("li");
+  item.textContent = data.message;
+  list.appendChild(item);
+});

@@ -55,7 +55,7 @@ def register():
 
         cursor.execute(
             "SELECT * FROM users WHERE username = ?",
-            (username)
+            (username,)
         )
 
         existing_user = cursor.fetchone()
@@ -76,7 +76,7 @@ def register():
 
         print(f"Usuário {username} cadastrado!")
 
-    return redirect("/login?success=true")
+    return render_template("register.html")
 @app.route("/login", methods=["GET", "POST"])
 def login():
     success = request.args.get("success")
@@ -141,7 +141,7 @@ def chat():
 
 @socketio.on("send_message")
 def handle_message(data):
-
+    emit("receive_message", data, broadcast=True)
     print(data["message"])
 
 if __name__ == "__main__":

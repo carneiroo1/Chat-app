@@ -19,7 +19,7 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def index():
-    return redirect('/login')
+    return redirect('/chat')
 
 @app.route("/register", methods=["GET", "POST"])
 def register():

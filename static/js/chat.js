@@ -10,6 +10,12 @@ function enviarMensagem() {
   input.value = "";
 }
 
+document.getElementById("message").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        enviarMensagem();
+    }
+});
+
 socket.on("receive_message", function(data) {
   const list = document.getElementById("message-list");
   const item = document.createElement("li");

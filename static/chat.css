@@ -6,13 +6,12 @@
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: none;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 header ul {
-    text-decoration: none;
+    list-style-type: none;
     display: flex;
     justify-content: space-between;
 }
@@ -24,14 +23,23 @@ body {
 
 #message {
     border: none;
-    width: 50%;
-    height: 30px;
+    width: 80rem;
+    height: 60px;
     padding: 5px 30px;
     border-radius: 50px;
     box-shadow: 0px 0px 50px gray;
 }
 
+#button-enviar {
+    padding: 7.5px 60px;
+    border: none;
+    background-color: #2d8a9e;
+    border-radius: 1rem;
+}
+
 .send-message-input-button {
     position: absolute;
     bottom: 50px;
+    display: flex;
+    gap: 15px;
 }

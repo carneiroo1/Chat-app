@@ -79,7 +79,8 @@ def register():
         conn.close()
 
         print(f"Usuário {username} cadastrado!")
-
+        return redirect("/login?success=true")
+        
     return render_template("register.html")
 @app.route("/login", methods=["GET", "POST"])
 def login():

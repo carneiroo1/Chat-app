@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request, redirect, session
 import sqlite3
 from flask_socketio import SocketIO, emit
+from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 
-app.secret_key = "@r24tur09///login-key-secrettt"
+app.secret_key = os.environ.get("SECRET_KEY")
 socketio = SocketIO(app)
 
 @app.route('/')
@@ -22,6 +25,7 @@ def register():
         username = request.form["username"]
         email = request.form["email"]
         password = request.form["password"]
+        hashed = generate_password_hash(password)
 
         if not username or not email or not password:
             return render_template(
@@ -48,7 +52,7 @@ def register():
 
         cursor.execute(
             "SELECT * FROM users WHERE username = ?",
-            (username,)
+            (username)
         )
 
         existing_user = cursor.fetchone()
@@ -59,10 +63,9 @@ def register():
                 "register.html",
                 error="Esse nome de usuário já está em uso."
             )
-
         cursor.execute(
             "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
-            (username, email, password)
+            (username, email, hashed)
         )
 
         conn.commit()
@@ -102,7 +105,7 @@ def login():
         user = cursor.fetchone()
 
         conn.close()
-        if user and user[3] == password:
+        if user and check_password_hash(user[3], password):
             session["username"] = username
 
             return redirect("/chat")

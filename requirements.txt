@@ -3,4 +3,5 @@ gunicorn
 flask-socketio
 werkzeug
 python-dotenv
-eventlet
+gevent
+gevent-websocket

@@ -1,0 +1,16 @@
+:root {
+    --cor1: #0c2340;
+    --cor2: #1a4a6e;
+    --cor3: #2d8a9e;
+    --cor4: #5cbdb9;
+}
+
+main {
+    background-color: var(--cor1);
+    color: var(--cor4);
+}
+
+.send-message-input-button {
+    position: relative;
+    bottom: 50px;
+}

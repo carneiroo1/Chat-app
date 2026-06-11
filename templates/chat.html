@@ -10,27 +10,31 @@
 
 <body>
     <header>
-
+        <nav>
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Servers</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </nav>
     </header>
-    <h1>Chat</h1>
+    <h1>Chat dos cria do senac</h1>
     
     <div id="messages"></div>
     
     <ul id="message-list"></ul>
     
-    <input
-    type="text"
-    id="message"
-    placeholder="Type your message..."
-    >
-    
-    <button onclick="enviarMensagem()">
-        Enviar
-    </button>
-
-    <footer>
+    <div class="send-message-input-button">
+        <input
+        type="text"
+        id="message"
+        placeholder="Type your message..."
+        >
         
-    </footer>
+        <button onclick="enviarMensagem()">
+            Enviar
+        </button>
+    </div>
 
 <!-- sc -->
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>

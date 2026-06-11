@@ -16,6 +16,12 @@ header ul {
     justify-content: space-between;
 }
 
+header a {
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+}
+
 body {
     background-color: #0c2340;
     color: #5cbdb9;
@@ -41,5 +47,5 @@ body {
     position: absolute;
     bottom: 50px;
     display: flex;
-    gap: 15px;
+    gap: 5vw;
 }

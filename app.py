@@ -143,11 +143,21 @@ def chat():
 
     return render_template("chat.html")
 
-
 @socketio.on("send_message")
 def handle_message(data):
-    emit("receive_message", data, broadcast=True)
-    print(data["message"])
+
+    emit(
+        "receive_message",
+        {
+            "username": session["username"],
+            "message": data["message"]
+        },
+        broadcast=True
+    )
+
+    print(
+        f'{session["username"]}: {data["message"]}'
+    )
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)

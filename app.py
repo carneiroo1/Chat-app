@@ -145,24 +145,50 @@ def chat():
 
 @socketio.on("send_message")
 def handle_message(data):
-
-    emit(
-        "receive_message",
-        {
-            "username": session["username"],
-            "message": data["message"]
-        },
-        broadcast=True
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT profile_picture FROM users WHERE username = ?",
+        (data["username"],)
     )
+    user = cursor.fetchone()
+    conn.close()
+
+    data["profile_picture"] = user[0]
+    emit("receive_message", data, broadcast=True)
 
     print(
         f'{session["username"]}: {data["message"]}'
     )
 
-@app.route("/profile")
+@app.route("/profile", methods=["GET", "POST"])
 def profile():
+    if "username" not in session:
+        return redirect("/login")
 
-    return render_template("profile.html")
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+
+    if  request.method == "POST":
+        nova_url = request.form["profile-picture"]
+        cursor.execute(
+            "UPDATE users SET profile_picture = ? WHERE username = ?",
+            (nova_url, session["username"])
+        )
+
+        conn.commit()
+        cursor.close()
+        return redirect("/profile")
+    
+    cursor.execute(
+        "SELECT * FROM users WHERE username = ?",
+        (session["username"],)
+    )
+    usuario = cursor.fetchone()
+    conn.close()
+
+
+    return render_template("profile.html", username=usuario)
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)

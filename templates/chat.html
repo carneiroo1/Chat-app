@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,26 +22,26 @@
     </header>
     <main>
         <h1>Chat dos cria do senac</h1>
-        
+
         <div id="messages"></div>
-        
+
         <ul id="message-list"></ul>
-        
+
         <div class="send-message-input-button">
-            <input
-            type="text"
-            id="message"
-            placeholder="Type your message..."
-            >
-        
+            <input type="text" id="message" placeholder="Type your message...">
+
             <button onclick="enviarMensagem()" id="button-enviar">
                 Enviar
             </button>
         </div>
     </main>
 
-<!-- sc -->
+    <!-- sc -->
+    <script>
+        const USERNAME = "{{ session['username'] }}";
+    </script>
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script src="{{url_for('static', filename='js/chat.js') }}"></script>
 </body>
+
 </html>

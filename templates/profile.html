@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="{{url_for ('static', filename='chat.css') }}">
+
 </head>
+
 <body>
     <header>
-        <a href="/prev">Back to Chat</a>
+        <nav>
+            <ul>
+                <li><a href="chat">Chat</a></li>
+                <li><a href="#">Servers</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Credits</a></li>
+            </ul>
+        </nav>
     </header>
+
+    <main>
+        <aside>
+            <h1>Profile Settings</h1>
+            <form action="" method="post">
+                <label for="change-nick">Change Nickname</label>
+                <input type="text" name="change-nick" id="change-nick" placeholder="Change your nickname here.">
+                <label for="profile-picture">Change profile Picture</label>
+                <input type="url" name="profile-picture" id="profile-picture" placeholder="paste the url of your image.">
+                <button type="Submit">Save Changes</button>
+            </form>
+        </aside>
+    </main>
 </body>
+
 </html>

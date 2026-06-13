@@ -159,10 +159,6 @@ def handle_message(data):
         f'{session["username"]}: {data["message"]}'
     )
 
-@app.route("/prev")
-def voltar():
-    return redirect("/chat")
-
 @app.route("/profile")
 def profile():
 

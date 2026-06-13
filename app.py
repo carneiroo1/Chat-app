@@ -1,5 +1,5 @@
-from gevent import monkey
-monkey.patch_all()
+# from gevent import monkey
+# monkey.patch_all()
 
 from flask import Flask, render_template, request, redirect, session
 import sqlite3
@@ -158,6 +158,15 @@ def handle_message(data):
     print(
         f'{session["username"]}: {data["message"]}'
     )
+
+@app.route("/prev")
+def voltar():
+    return redirect("/chat")
+
+@app.route("/profile")
+def profile():
+
+    return render_template("profile.html")
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)

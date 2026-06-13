@@ -27,7 +27,6 @@ body {
     color: white;
 }
 
-/* HEADER / NAV */
 header {
     padding: 14px 24px;
     background: var(--glass);
@@ -53,7 +52,6 @@ nav ul li a:hover {
     color: white;
 }
 
-/* MAIN */
 main {
     flex: 1;
     display: flex;
@@ -95,7 +93,6 @@ main h1 {
     word-break: break-word;
 }
 
-/* INPUT + BOTÃO */
 .send-message-input-button {
     display: flex;
     gap: 10px;
@@ -147,6 +144,65 @@ main h1 {
 }
 
 #button-enviar:active {
+    transform: translateY(0);
+}
+
+.change-profile {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+}
+
+aside {
+    width: 100%;
+    max-width: 480px;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3)
+}
+
+.change-profile input {
+    max-width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--input-bg);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+.change-profile input::placeholder {
+    color: white;
+    font-size: 0.9rem;
+}
+
+.change-profile input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 2px #60a5fa;
+}
+.save-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: var(--accent);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.save-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.save-btn:active {
     transform: translateY(0);
 }
 

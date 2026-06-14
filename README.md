@@ -62,27 +62,6 @@ bashpython app.py
 
 Access it at http://localhost:5000
 
-
-📁 Project Structure
-
-Chat-app/
-├── static/
-│   ├── js/
-│   │   └── chat.js
-│   ├── chat.css
-│   └── ...
-├── templates/
-│   ├── login.html
-│   ├── register.html
-│   ├── chat.html
-│   └── profile.html
-├── app.py
-├── init_db.py
-├── requirements.txt
-├── Procfile
-└── .env.example
-
-
 🌐 Live Demo
 
 https://chat-app-wqh2.onrender.com
